@@ -1,2 +1,5 @@
-package projects.focusapp;public class Db {
+package projects.focusapp;
+import java.sql.*;
+public class Db {
+
 }
