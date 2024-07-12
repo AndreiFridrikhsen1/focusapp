@@ -1,5 +1,7 @@
 package projects.focusapp;
 
-public class AlreadyExistsExeption extends Exception {
-    public validate
+public class AlreadyExistsException extends Exception {
+    public AlreadyExistsException(String msg){
+        super(msg);
+    }
 }
