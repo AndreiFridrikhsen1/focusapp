@@ -1,6 +1,7 @@
 package projects.focusapp;
 
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,6 +12,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class FocusController {
@@ -49,6 +51,43 @@ public class FocusController {
     @FXML
     private TableColumn<Stopwatch, String> focusTime;
     private boolean scene1;
+    @FXML
+    private TextField searchField;
+    private String taskToSearch;
+    ObservableList<Stopwatch> data;
+    // search task
+    @FXML
+    void search(ActionEvent event) {
+        taskToSearch = searchField.getText();
+        if (!taskToSearch.isEmpty()) {
+            // search observable list
+            ObservableList<Stopwatch> filteredList = FXCollections.observableArrayList();
+            boolean taskFound = false;
+
+            // if stopwatch obj in observable list where taskname = to tasktosearch, add this object to a filtered list
+            for (Stopwatch stopwatch : data) {
+                if (stopwatch.getTask().toLowerCase().equals(taskToSearch.toLowerCase())) {
+                    filteredList.add(stopwatch);
+                    taskFound = true;
+                }
+            }
+
+            if (taskFound) {
+                table.setItems(filteredList);
+                error.setText("");
+            } else {
+                error.setText("Task not found");
+                System.out.println("Task to search: " + taskToSearch);
+            }
+
+        } else {
+            error.setText("Enter the task name");
+        }
+    }
+    @FXML
+    void showAll(ActionEvent event) {
+        table.setItems(data);
+    }
 
     @FXML
     void changeScene1(ActionEvent event) {
@@ -198,7 +237,7 @@ public class FocusController {
         if(!scene1) {
         try {
 
-            ObservableList<Stopwatch> data = db.addToList();
+            data = db.addToList();
             taskName.setCellValueFactory(new PropertyValueFactory<>("task"));
             focusTime.setCellValueFactory(new PropertyValueFactory<>("time"));
             table.setItems(data);
