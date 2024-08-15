@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
@@ -55,6 +56,9 @@ public class FocusController {
     private TextField searchField;
     private String taskToSearch;
     ObservableList<Stopwatch> data;
+
+    @FXML
+    private Text quote;
     // search task
     @FXML
     void search(ActionEvent event) {
@@ -216,9 +220,19 @@ public class FocusController {
     }
     public void initialize (){
 
+        try{
+            //display a quote
+            QuotesApi quotesApi = new QuotesApi();
+            String author = quotesApi.getQuote().getQuoteAuthor();
+            String text = quotesApi.getQuote().getQuoteText();
+            quote.setText(text + "(" + author + ")");
+        }catch(Exception e) {
+            System.out.println(e.getMessage());
+        }
        error.setText("");
         Db db = new Db();
        List<String> tasks = db.getTasks();
+
        try {
            for (String taskName : tasks) {
                dropdown.getItems().add(taskName);
@@ -229,6 +243,7 @@ public class FocusController {
            }
            comboboxList = dropdown.getItems();
            task = dropdown.getSelectionModel().getSelectedItem();
+
 
        }catch (NullPointerException e){
            System.out.println(e.getMessage());

@@ -6,34 +6,40 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projects.focusapp.FocusController">
+<AnchorPane prefHeight="455.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projects.focusapp.FocusController">
    <children>
-      <Button layoutX="183.0" layoutY="302.0" mnemonicParsing="false" onAction="#start" text="Start" />
-      <Button layoutX="349.0" layoutY="302.0" mnemonicParsing="false" onAction="#stop" text="Stop" />
-      <Label fx:id="hours" layoutX="183.0" layoutY="200.0" text="00">
+      <Button layoutX="192.0" layoutY="313.0" mnemonicParsing="false" onAction="#start" text="Start" />
+      <Button layoutX="358.0" layoutY="313.0" mnemonicParsing="false" onAction="#stop" text="Stop" />
+      <Label fx:id="hours" layoutX="186.0" layoutY="205.0" text="00">
          <font>
             <Font size="48.0" />
          </font>
       </Label>
-      <Label fx:id="minutes" layoutX="265.0" layoutY="200.0" text="00">
+      <Label fx:id="minutes" layoutX="274.0" layoutY="205.0" text="00">
          <font>
             <Font size="48.0" />
          </font>
       </Label>
-      <Label fx:id="seconds" layoutX="343.0" layoutY="200.0" text="00">
+      <Label fx:id="seconds" layoutX="352.0" layoutY="205.0" text="00">
          <font>
             <Font size="48.0" />
          </font>
       </Label>
-      <ComboBox fx:id="dropdown" layoutX="190.0" layoutY="87.0" onAction="#onSelect" prefWidth="150.0" promptText="Empty" />
-      <TextField fx:id="input" layoutX="191.0" layoutY="146.0" promptText="Enter task name" />
-      <Button layoutX="369.0" layoutY="146.0" mnemonicParsing="false" onAction="#ok" text="OK" />
-      <Label fx:id="error" layoutX="117.0" layoutY="41.0" prefHeight="27.0" prefWidth="347.0" text="Error" textFill="#d41919">
+      <ComboBox fx:id="dropdown" layoutX="198.0" layoutY="84.0" onAction="#onSelect" prefWidth="150.0" promptText="Empty" />
+      <TextField fx:id="input" layoutX="199.0" layoutY="153.0" promptText="Enter task name" />
+      <Button layoutX="378.0" layoutY="153.0" mnemonicParsing="false" onAction="#ok" text="OK" />
+      <Label fx:id="error" layoutX="126.0" layoutY="40.0" prefHeight="27.0" prefWidth="347.0" text="Error" textFill="#d41919">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Button fx:id="showTasks" layoutX="499.0" layoutY="14.0" mnemonicParsing="false" onAction="#changeScene1" text="Show Tasks" />
+      <Button fx:id="showTasks" layoutX="501.0" layoutY="14.0" mnemonicParsing="false" onAction="#changeScene1" text="Show Tasks" />
+      <Text fx:id="quote" layoutX="80.0" layoutY="400.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="439.1999877929686">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>
